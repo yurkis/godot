@@ -26,7 +26,12 @@
 /* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE     */
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
-#include <alloca.h>
+#ifndef __FreeBSD__
+ #include <alloca.h>
+#else
+  #include <stdlib.h>
+#endif
+
 #define GLES2_INCLUDE_H "gl_context/glew.h"
 #define GLES1_INCLUDE_H "gl_context/glew.h"
 

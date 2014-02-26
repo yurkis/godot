@@ -45,7 +45,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#ifndef __FreeBSD__
 #include <linux/joystick.h>
+#endif
 
 //stupid linux.h
 #ifdef KEY_TAB
@@ -1073,7 +1075,7 @@ void OS_X11::move_window_to_foreground() {
 }
 
 void OS_X11::process_joysticks() {
-
+#ifndef __FreeBSD__
 	int bytes;
 	js_event events[32];
 	InputEvent ievent;
@@ -1172,6 +1174,7 @@ void OS_X11::process_joysticks() {
 			};
 		};
 	};
+#endif
 };
 
 void OS_X11::set_cursor_shape(CursorShape p_shape) {
